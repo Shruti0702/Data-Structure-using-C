@@ -1,0 +1,55 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+	int data;
+	struct node *next;
+};
+int main()
+{
+	int choice,a,b;
+	struct node *head,*m,*temp,*new_node;
+	head=temp=NULL;
+	printf("enter \n0.QUIT \n1.CONTINUE\n");
+	scanf("%d",&choice);
+	while(choice!=0)
+	{
+		new_node=(struct node*)malloc(sizeof(struct node));
+		printf("enter the data\n");
+		scanf("%d",&new_node->data);
+		new_node->next=NULL;
+		if(head==NULL)
+		{
+			temp=head=new_node;
+		}
+		else
+		{
+			temp->next=new_node;
+			temp=temp->next;
+		}
+		printf("enter \n0.QUIT \n1.CONTINUE\n");
+		scanf("%d",&choice);
+	}
+	
+	temp=head;
+	m=head->next;
+	printf("hi\n");
+	while(m!=NULL)
+	{
+		if((temp->data)>(m->data))
+		{
+			a=temp->data;
+			temp->data=m->data;
+			m->data=a;
+		}
+		temp=temp->next;
+		m=temp->next;
+	}
+	printf("Sorted list is:\n");
+	m=head;
+	while(m!=NULL)
+	{
+		printf("%d",m->data);	
+		m=m->next;
+	}	
+}

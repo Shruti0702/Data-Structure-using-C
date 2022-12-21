@@ -1,0 +1,61 @@
+#include<stdio.h>
+int main()
+{
+	int n,choice,top=-1;
+	printf("Enter the size of stack\n");
+	scanf("%d",&n);
+	int stack[n];
+	printf("Enter your choice \n0.Quit\n 1.PUSH \n 2.POP\n3.PEEK\n\n");
+	scanf("%d",&choice);
+
+while(choice!=0)
+{
+    switch(choice)
+    {
+    	case 1:
+    		if(top<n-1)
+    		{
+    			int value;
+    			printf("enter the value to be pushed\n");
+				scanf("%d",&value);
+				stack[++top]=value;
+			}
+			else
+			{
+				printf("stack is full..");
+			}
+		break;
+		
+		case 2:
+		    if(top==-1)
+			{
+	    		printf("stack is empty\n");
+			}
+			else
+			{
+				int item;
+				item=stack[top--];
+				printf("deleted item is %d\n",item);
+			}
+		break;
+		
+		case 3:
+			if(top!=-1)
+			{
+			printf("Top most element in stack is%d\n\n",stack[top]);
+		    }
+		    else
+		    {
+		    	printf("Stack is underflow\n");
+			}
+		break;
+		
+		default:
+	    	 printf("Invalid choice\n");
+		break;	
+	}
+	
+	printf("Enter your choice \n0.Quit\n 1.PUSH \n 2.POP\n3.PEEK\n\n");
+	scanf("%d",&choice);
+}
+}

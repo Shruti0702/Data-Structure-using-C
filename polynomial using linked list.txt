@@ -1,0 +1,55 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+	int coefficient;
+	int exponent;
+	struct node *next;
+};
+int main()
+{
+	int choice;
+	struct node *head,*temp,*new_node;
+
+	head=temp=NULL;
+	printf("Enter your choice 0.QUIT\n 1.CONTINUE\n");
+	scanf("%d",&choice);
+	while(choice!=0)
+	{
+		new_node=(struct node*)malloc(sizeof(struct node));
+		new_node->next=NULL;
+		printf("Enter the polynomial coefficient\n");
+	    scanf("%d",&new_node->coefficient);
+	    printf("enter exponent\n");
+	    scanf("%d",&new_node->exponent);
+		if(head==NULL)
+		{
+			temp=head=new_node;
+		}
+		else
+		{
+			temp->next=new_node;
+			temp=temp->next;
+		}
+		printf("Enter your choice 0.QUIT\n 1.CONTINUE\n");
+	    scanf("%d",&choice);
+	}
+	temp=head;
+	while(temp!=NULL)
+	{
+		if(temp->coefficient>0)
+		{
+			printf("+");
+			printf("%d",temp->coefficient);
+			printf("x^%d",temp->exponent);
+			temp=temp->next;
+		}
+		else
+		{
+			printf("-");
+			printf("%d",temp->coefficient);
+			printf("x^%d",temp->exponent);
+			temp=temp->next;
+		}
+	}
+}

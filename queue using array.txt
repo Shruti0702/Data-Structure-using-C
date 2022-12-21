@@ -1,0 +1,55 @@
+#include<stdio.h>
+int main()
+{
+	int size,front=-1,rear=-1,choice;
+	printf("Enter the size of array\n");
+	scanf("%d",&size);
+	int a[size];
+	printf("Enter your choice\n1.Enqueue\n2.Delete\n");
+	scanf("%d",&choice);
+	while(choice!=0)
+	{
+		switch(choice)
+		{
+			case 1:
+				if(front==-1&&rear==-1)	//front=0,rear=0,a[0]=10
+				{
+					front=0;
+					rear=0;
+					printf("Enter data\n");
+					scanf("%d",&a[rear]);
+					rear++;
+				}
+				else if(rear==size-1)
+				{
+					printf("Overflow condition\n");
+				}
+				else
+				{
+					printf("Enter your data\n");
+					scanf("%d",&a[rear++]);				
+				}
+			break;
+			case 2:
+				if(front==-1&&rear==-1)
+				{
+					printf("Underflow condition\n");
+				}
+				else if(front==rear)
+				{
+					front=rear=-1;
+				}
+				else
+				{
+					printf("%d\n",a[front]);
+					front++;
+				}
+			break;
+			default:
+				printf("Invalid choice!\n");
+			break;	
+		}
+		printf("Enter your choice\n1.Enqueue\n2.Delete\n");
+		scanf("%d",&choice);
+	}
+}

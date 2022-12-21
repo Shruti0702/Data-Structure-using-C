@@ -1,0 +1,73 @@
+#include<stdio.h>
+#include<malloc.h>
+struct node
+{
+	int data;
+	struct node* next;
+	struct node* previous;
+};
+struct node* head=NULL;
+struct node* temp=NULL;
+void push(int t)
+{
+	struct node* new_node=(struct node*)malloc(sizeof(struct node));
+	new_node->next=NULL;
+	printf("Enter the data to be pushed\n");
+	scanf("%d",&new_node->data);
+	new_node->previous=NULL;
+	if(t>-1)
+	{
+		if(head==NULL)
+		{
+			head=temp=new_node;
+		}
+		else
+		{
+			new_node->previous=temp;
+			temp->next=new_node;
+			temp=temp->next;		
+		}
+	}
+}
+void pop(int top)
+{
+		if(top>-1)
+		{
+			printf("%d Element from stack has been popped\n",temp->data);
+			temp=temp->previous;
+		}
+}
+int main()
+{
+	int top=-1,choice;
+	printf("1.Push\t2.Pop\t3.Peek");
+	scanf("%d",&choice);
+	while(choice!=0)
+	{
+		switch(choice)
+		{
+			case 1:
+				push(++top);
+			break;
+			case 2:
+				if(top==-1)
+				{
+					printf("Stack is empty\n");
+				}
+				else
+				{
+					pop(top--);
+					head=temp;
+				}
+			break;
+			case 3:
+				printf("Top value at stack is: %d\n",temp->data);
+			break;
+			default:
+				printf("invalid");
+			break;
+		}
+			printf("1.Push\t2.Pop\t3.Peek\n");
+			scanf("%d",&choice);
+	}
+}
